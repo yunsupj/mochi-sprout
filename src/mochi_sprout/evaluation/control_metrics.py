@@ -13,6 +13,8 @@ def evaluate_step_response(
     controls held over each physics interval, excluding the final endpoint.
     Settling requires all future sampled states to stay in the band.
     Saturation counts only controller updates, including those before the step.
+    Overshoot is defined for this experiment's fixed positive target step; it
+    must be generalized before use with negative or time-varying targets.
     """
     if len(rows) < 2 or any(b["time_s"] <= a["time_s"] for a, b in zip(rows, rows[1:])):
         raise ValueError("rows must have increasing time")

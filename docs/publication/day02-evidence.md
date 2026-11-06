@@ -16,6 +16,8 @@ Explain feedback torque control, P/I/D terms, anti-windup, derivative damping, a
 
 **MEASURED:** Final-window mean absolute angle error (last 2 s): baseline 30.000°, P 33.191°, PI 41.815°, PD 8.560°, PID 0.313°. Overshoot: P 40.396°, PI 53.249°, baseline/PD/PID 0°. Only PID satisfied the permanent ±2° settling criterion within 10 s, at 3.630 s after the step. P and PI saturated at 36.9% and 49.8% of controller updates; PD and PID each at 0.1%. The [experiment record](../../experiments/day02/README.md) defines every metric and reports RMSE and effort too.
 
+**INTERPRETATION:** The baseline's zero overshoot is not successful control: it remained at the 0° downward equilibrium, never approached the +30° target, and retained 30° error.
+
 **INTERPRETATION:** With these gains and this low-damping model, P and PI kept oscillating; integral action alone did not improve the observed final-window error. Derivative damping reduced oscillation. PID combined that damping with integral correction and performed best in this single comparison.
 
 **NOT VERIFIED:** Physical robot accuracy, robustness to altered gain sets or model parameters, safety of a real actuator, general superiority of PID, and performance on locomotion tasks.
