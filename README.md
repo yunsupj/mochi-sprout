@@ -6,7 +6,9 @@ Mochi Sprout is an open-source robotics learning project with a long-term goal o
 
 Day 1 is a reproducible, headless [MuJoCo](https://mujoco.readthedocs.io/en/stable/python.html) pendulum experiment. An explicit MJCF model has one hinge. The runner records simulated time, joint angle (`qpos`), and angular velocity (`qvel`) under normal and reduced gravity, starting from the same state. The five tests check that the model loads, time advances, states stay finite, repeated runs agree, and gravity changes the trajectory. The full configuration and measured results are in the [experiment record](experiments/day01/README.md) and [JSON data](experiments/day01/results.json).
 
-There is **no physical robot, locomotion policy, hardware integration, actuator, or learned controller** in this release. Simulated results have not been validated against hardware.
+Day 2 adds a torque actuator to the same pendulum and compares a no-control baseline with P, PI, PD, and PID feedback. The [comparison plot](experiments/day02/comparison.png), [metrics](experiments/day02/summary.json), and [full physics-step trajectories](experiments/day02/trajectories.csv) are generated from the experiment runner. See the [Day 2 record](experiments/day02/README.md) for configuration and metric definitions.
+
+There is **no physical robot, locomotion policy, hardware integration, or learned controller** in this release. Simulated results have not been validated against hardware.
 
 ## Setup and reproduce
 
@@ -16,13 +18,26 @@ Install Python 3.11 and [uv](https://docs.astral.sh/uv/). Clone the repository, 
 uv sync --locked --python 3.11
 uv run --locked --python 3.11 pytest -q
 uv run --locked --python 3.11 python -m mochi_sprout.simulation.pendulum --output experiments/day01/results.json
+uv run --locked --python 3.11 python -m mochi_sprout.experiments.day02 --output-dir experiments/day02
 ```
 
-The last command regenerates `results.json` with a new recording timestamp. Compare the trajectory values with the checked-in record; minor floating-point differences across platforms are possible. `uv.lock` records dependency versions. See [Day 1 notes](docs/phase0-day1.md) for the method and limits.
+The Day 1 and Day 2 runners regenerate their artifacts and recording timestamps. Compare numerical values with the checked-in records; minor floating-point differences across platforms are possible. `uv.lock` records dependency versions. See the [Day 1 notes](docs/phase0-day1.md) and [Day 2 notes](docs/phase0-day2.md) for methods and limits.
+
+## Reuse the controller
+
+```python
+from mochi_sprout.control import PID, PIDConfig
+
+controller = PID(PIDConfig(kp=6, ki=3, kd=1, output_min=-3, output_max=3))
+torque_nm = controller.update(target=0.5, measurement=0.0, dt=0.01)
+controller.reset()  # before a new episode
+```
+
+The generic controller uses no MuJoCo import. Supply target and measurement in consistent units; the example uses radians and returns N·m. To try another controller, implement `reset()` and `update(target, measurement, dt)` plus a `saturated` flag, then pass it to [`run_episode`](src/mochi_sprout/simulation/controlled_pendulum.py). The physics model does not need changing.
 
 ## Learning path and contributions
 
-The long-term roadmap is to learn feedback control, extend physics experiments, evaluate robot dynamics and learning, and only then work toward sim-to-real validation. Future features are proposals, not present capabilities. The [Day 1 learning gate](docs/learning-gates.md) is recorded as passed; the next learning topic is PID and feedback control, with no Day 2 implementation here.
+The long-term roadmap is to extend physics experiments, evaluate robot dynamics and learning, and only then work toward sim-to-real validation. Future features are proposals, not present capabilities. The [Day 1 learning gate](docs/learning-gates.md) and the human Day 2 PID fundamentals gate have been recorded as passed.
 
 Contributors can help improve experiment clarity, tests, reproducibility, and quantitative evaluation. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Small, evidence-backed changes are welcome.
 

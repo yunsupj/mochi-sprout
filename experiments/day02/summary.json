@@ -1,0 +1,130 @@
+{
+  "experiment_id": "day02-pid-step-comparison",
+  "recorded_at": "2026-11-05T20:47:02.128669-08:00",
+  "source_base_revision": "b387c803a7ddf6192ace782515fff94377a7ff95",
+  "python_version": "3.11.8",
+  "mujoco_version": "3.17.0",
+  "dependency_versions": {
+    "numpy": "2.4.6",
+    "matplotlib": "3.11.2",
+    "pytest": "9.2.0"
+  },
+  "operating_system": "macOS-26.6.2-arm64-arm-64bit",
+  "experiment_config": {
+    "duration_s": 10.0,
+    "controller_dt_s": 0.01,
+    "step_time_s": 0.5,
+    "target_after_step_rad": 0.5235987755982988,
+    "settling_band_rad": 0.03490658503988659,
+    "steady_window_s": 2.0
+  },
+  "model_config": {
+    "torque_limit_nm": 3.0,
+    "gravity_z_m_s2": -9.81
+  },
+  "compiled_model_checks": {
+    "mass_kg": 1.0,
+    "rod_length_m": 0.5,
+    "body_com_from_hinge_m": [
+      0.0,
+      0.0,
+      -0.25
+    ],
+    "effective_hinge_inertia_kg_m2": 0.08639257812500001,
+    "joint_damping_nm_s_per_rad": 0.01,
+    "actuator_gear": 1.0,
+    "actuator_ctrlrange_nm": [
+      -3.0,
+      3.0
+    ],
+    "gravity_z_m_s2": -9.81,
+    "physics_timestep_s": 0.002,
+    "integrator": "RK4",
+    "positive_angle_com_x_m_at_target": -0.12499999999999999,
+    "gravity_hold_torque_nm_at_target": 1.2262499999999998,
+    "positive_max_ctrl_joint_torque_nm": 3.0
+  },
+  "controller_configs": {
+    "P": {
+      "kp": 6.0,
+      "ki": 0.0,
+      "kd": 0.0,
+      "output_min": -3.0,
+      "output_max": 3.0
+    },
+    "PI": {
+      "kp": 6.0,
+      "ki": 3.0,
+      "kd": 0.0,
+      "output_min": -3.0,
+      "output_max": 3.0
+    },
+    "PD": {
+      "kp": 6.0,
+      "ki": 0.0,
+      "kd": 1.0,
+      "output_min": -3.0,
+      "output_max": 3.0
+    },
+    "PID": {
+      "kp": 6.0,
+      "ki": 3.0,
+      "kd": 1.0,
+      "output_min": -3.0,
+      "output_max": 3.0
+    }
+  },
+  "gain_selection": "Choose a natural frequency near 8 rad/s: I*8\u00b2=5.53 N\u00b7m/rad, rounded to shared Kp=6. Choose damping ratio near 0.7: 2*0.7*sqrt(Kp*I)=1.01 N\u00b7m\u00b7s/rad, rounded to Kd=1. Choose integral time Kp/Ki=2 s, giving Ki=3 N\u00b7m/(rad\u00b7s). The compiled hinge inertia I=0.08639 kg\u00b7m\u00b2 was inspected before these common gains and four controller comparisons.",
+  "metrics": {
+    "baseline": {
+      "steady_state_mae_deg": 30.000000000000373,
+      "overshoot_deg": 0.0,
+      "settling_time_s": null,
+      "rmse_after_step_deg": 30.000000000000085,
+      "max_abs_torque_nm": 0.0,
+      "rms_torque_nm": 0.0,
+      "saturation_fraction": 0.0,
+      "status": "finite_unsettled"
+    },
+    "P": {
+      "steady_state_mae_deg": 33.19117736185301,
+      "overshoot_deg": 40.396444839851135,
+      "settling_time_s": null,
+      "rmse_after_step_deg": 28.698759164413342,
+      "max_abs_torque_nm": 3.0,
+      "rms_torque_nm": 2.2543024749990286,
+      "saturation_fraction": 0.369,
+      "status": "finite_unsettled"
+    },
+    "PI": {
+      "steady_state_mae_deg": 41.81520978929545,
+      "overshoot_deg": 53.24949236845291,
+      "settling_time_s": null,
+      "rmse_after_step_deg": 36.79553423947688,
+      "max_abs_torque_nm": 3.0,
+      "rms_torque_nm": 2.4256866904230487,
+      "saturation_fraction": 0.498,
+      "status": "finite_unsettled"
+    },
+    "PD": {
+      "steady_state_mae_deg": 8.560367423915126,
+      "overshoot_deg": 0.0,
+      "settling_time_s": null,
+      "rmse_after_step_deg": 9.090966608892513,
+      "max_abs_torque_nm": 3.0,
+      "rms_torque_nm": 0.8811018385731955,
+      "saturation_fraction": 0.001,
+      "status": "finite_unsettled"
+    },
+    "PID": {
+      "steady_state_mae_deg": 0.3131429588971128,
+      "overshoot_deg": 0.0,
+      "settling_time_s": 3.629999999999767,
+      "rmse_after_step_deg": 4.299811342806088,
+      "max_abs_torque_nm": 3.0,
+      "rms_torque_nm": 1.123690099152906,
+      "saturation_fraction": 0.001,
+      "status": "finite_settled"
+    }
+  }
+}
