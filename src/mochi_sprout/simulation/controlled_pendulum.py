@@ -2,11 +2,13 @@
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from math import isfinite
 from typing import Protocol
 
 import mujoco
 
 from .pendulum import MJCF
+from .observation import ObservationPipeline
 
 
 @dataclass(frozen=True)
@@ -15,6 +17,7 @@ class PendulumModelConfig:
 
     torque_limit_nm: float = 3.0
     gravity_z_m_s2: float = -9.81
+    inertia_factor: float = 1.0
 
 
 class ScalarController(Protocol):
@@ -25,8 +28,10 @@ class ScalarController(Protocol):
 
 
 def make_controlled_model(config: PendulumModelConfig = PendulumModelConfig()) -> mujoco.MjModel:
-    if config.torque_limit_nm <= 0:
-        raise ValueError("torque limit must be positive")
+    if (not isfinite(config.torque_limit_nm) or config.torque_limit_nm <= 0
+            or not isfinite(config.gravity_z_m_s2)
+            or not isfinite(config.inertia_factor) or config.inertia_factor < 1):
+        raise ValueError("invalid physical model configuration")
     actuator = (
         '<actuator><motor name="hinge_torque" joint="hinge" gear="1" '
         f'ctrllimited="true" ctrlrange="{-config.torque_limit_nm} {config.torque_limit_nm}"/>'
@@ -34,6 +39,14 @@ def make_controlled_model(config: PendulumModelConfig = PendulumModelConfig()) -
     )
     model = mujoco.MjModel.from_xml_string(MJCF.replace("</mujoco>", actuator))
     model.opt.gravity[2] = config.gravity_z_m_s2
+    if config.inertia_factor != 1:
+        # Preserve mass and COM. Add equal transverse central inertia to keep
+        # the diagonal tensor positive and satisfy its triangle inequalities.
+        data = mujoco.MjData(model)
+        mujoco.mj_forward(model, data)
+        delta = (config.inertia_factor - 1) * float(data.M[0])
+        model.body_inertia[1, 0:2] += delta
+        mujoco.mj_setConst(model, data)
     return model
 
 
@@ -44,6 +57,7 @@ def run_episode(
     duration_s: float,
     controller_dt_s: float,
     model_config: PendulumModelConfig = PendulumModelConfig(),
+    observation: ObservationPipeline | None = None,
 ) -> list[dict[str, float | bool]]:
     """Sample every physics step; hold each torque for one controller interval."""
     model = make_controlled_model(model_config)
@@ -59,16 +73,31 @@ def run_episode(
     mujoco.mj_forward(model, data)
     if controller is not None:
         controller.reset()
+    if observation is not None:
+        observation.reset()
     rows: list[dict[str, float | bool]] = []
+    last_observation: dict = {}
     for step in range(steps):
         target = target_at_time(step * physics_dt)
         updated = step % update_steps == 0
         if updated:
+            if observation is not None:
+                sample = observation.observe(step * physics_dt, float(data.qpos[0]))
+                last_observation = {
+                    "raw_sensor_rad": sample.raw_angle_rad,
+                    "observed_rad": sample.angle_rad,
+                    "measurement_time_s": sample.measurement_time_s,
+                    "measurement_age_s": sample.age_s,
+                }
             data.ctrl[0] = (
                 0.0 if controller is None
-                else controller.update(target, float(data.qpos[0]), controller_dt_s)
+                else controller.update(
+                    target,
+                    float(data.qpos[0]) if observation is None else sample.angle_rad,
+                    controller_dt_s,
+                )
             )
-        rows.append({
+        row = {
             "time_s": float(data.time),
             "target_rad": target,
             "qpos_rad": float(data.qpos[0]),
@@ -77,10 +106,15 @@ def run_episode(
             "torque_nm": float(data.ctrl[0]),
             "controller_updated": updated,
             "saturated": bool(controller.saturated) if controller is not None else False,
-        })
+        }
+        if observation is not None:
+            row.update(last_observation)
+            if not updated:
+                row["raw_sensor_rad"] = None
+        rows.append(row)
         mujoco.mj_step(model, data)
     target = target_at_time(duration_s)
-    rows.append({
+    row = {
         "time_s": float(data.time),
         "target_rad": target,
         "qpos_rad": float(data.qpos[0]),
@@ -89,5 +123,9 @@ def run_episode(
         "torque_nm": float(data.ctrl[0]),
         "controller_updated": False,
         "saturated": bool(controller.saturated) if controller is not None else False,
-    })
+    }
+    if observation is not None:
+        row.update(last_observation)
+        row["raw_sensor_rad"] = None
+    rows.append(row)
     return rows
