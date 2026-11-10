@@ -92,6 +92,11 @@ def test_robustness_metrics_use_true_state_and_unsettled_is_explicit() -> None:
                                   steady_window_s=0.5, settling_band_rad=0.01)
     assert metrics["steady_state_mae_deg"] == pytest.approx(math.degrees(1))
     assert metrics["settling_time_s"] is None
+    # A corrupted observation-based error field cannot change physical metrics.
+    for row in rows:
+        row["error_rad"] = 0
+    assert evaluate_robustness(rows, step_time_s=0.5, target_rad=1,
+                               steady_window_s=0.5, settling_band_rad=0.01) == metrics
     aggregate = aggregate_metrics({11: metrics, 23: metrics})
     assert aggregate["unsettled_count"] == 2
     assert aggregate["numeric"]["settling_time_s"] is None
@@ -104,11 +109,29 @@ def test_aggregation_reports_seed_variability_and_partial_settling() -> None:
              "status": "finite_unsettled"},
         23: {"steady_state_mae_deg": 3.0, "settling_time_s": 2.0,
              "status": "finite_settled"},
+        37: {"steady_state_mae_deg": 5.0, "settling_time_s": None,
+             "status": "failed_nonfinite_or_over_360deg"},
     })
-    assert aggregate["seed_count"] == 2
-    assert aggregate["unsettled_count"] == 1
+    assert aggregate["seed_count"] == 3
+    assert aggregate["unsettled_count"] == 2
+    assert aggregate["status_counts"]["failed_nonfinite_or_over_360deg"] == 1
     assert aggregate["numeric"]["steady_state_mae_deg"] == {
-        "mean": 2.0, "population_sd": 1.0, "min": 1.0,
-        "max": 3.0, "observed_count": 2,
+        "mean": 3.0, "population_sd": pytest.approx(math.sqrt(8 / 3)),
+        "min": 1.0, "max": 5.0, "observed_count": 3,
     }
     assert aggregate["numeric"]["settling_time_s"]["observed_count"] == 1
+
+
+def test_torque_change_uses_adjacent_controller_updates_only() -> None:
+    rows = []
+    for time, torque, update in [(0, 0, True), (0.005, 0, False),
+                                 (0.01, 3, True), (0.015, 3, False),
+                                 (0.02, 7, True), (0.025, 7, False)]:
+        rows.append({"time_s": time, "target_rad": 1, "qpos_rad": 0,
+                     "qvel_rad_s": 0, "error_rad": 1, "torque_nm": torque,
+                     "controller_updated": update, "saturated": False,
+                     "raw_sensor_rad": 0, "observed_rad": 0,
+                     "measurement_time_s": time, "measurement_age_s": 0})
+    metrics = evaluate_robustness(rows, step_time_s=0.01, target_rad=1,
+                                  steady_window_s=0.005, settling_band_rad=0.01)
+    assert metrics["rms_torque_change_nm_per_update"] == pytest.approx(math.sqrt(12.5))

@@ -14,8 +14,12 @@ def evaluate_robustness(
     rows: list[dict], *, step_time_s: float, target_rad: float,
     steady_window_s: float, settling_band_rad: float,
 ) -> dict:
+    # Keep physical tracking tied to ground truth even if a future adapter
+    # supplies an observation-based or stale error_rad field.
+    true_rows = [{**row, "error_rad": row["target_rad"] - row["qpos_rad"]}
+                 for row in rows]
     metrics = evaluate_step_response(
-        rows, step_time_s=step_time_s, target_rad=target_rad,
+        true_rows, step_time_s=step_time_s, target_rad=target_rad,
         steady_window_s=steady_window_s, settling_band_rad=settling_band_rad,
     )
     updates = [row for row in rows[:-1] if row["controller_updated"]]
