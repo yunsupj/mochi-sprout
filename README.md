@@ -10,6 +10,8 @@ Day 2 adds a torque actuator to the same pendulum and compares a no-control base
 
 Day 3 keeps the Day 2 PID gains fixed and tests isolated hinge inertia, Gaussian angle noise, fixed sensor delay, and one combined case. The [Day 3 record](experiments/day03/README.md) links nine scenario summaries, five plots, and representative controller-update trajectories. The [technical notes](docs/phase0-day3.md) explain the disturbance boundaries and measured limitations.
 
+Day 4 extends observation processing with a reusable EMA filter and seeded, timestamped variable delivery delay. The [Day 4 evidence](experiments/day04/README.md) includes a measured failure when filtering and jitter are combined with the unchanged PID. See [technical notes](docs/phase0-day4.md) for the delivery policy and limits.
+
 There is **no physical robot, locomotion policy, hardware integration, or learned controller** in this release. Simulated results have not been validated against hardware.
 
 ## Setup and reproduce
@@ -22,6 +24,7 @@ uv run --locked --python 3.11 pytest -q
 uv run --locked --python 3.11 python -m mochi_sprout.simulation.pendulum --output experiments/day01/results.json
 uv run --locked --python 3.11 python -m mochi_sprout.experiments.day02 --output-dir experiments/day02
 uv run --locked --python 3.11 python -m mochi_sprout.experiments.day03 --output-dir experiments/day03
+uv run --locked --python 3.11 python -m mochi_sprout.experiments.day04 --output-dir experiments/day04
 ```
 
 The runners regenerate their artifacts and recording timestamps. Compare numerical values with the checked-in records; minor floating-point differences across platforms are possible. `uv.lock` records dependency versions. See the [Day 1 notes](docs/phase0-day1.md), [Day 2 notes](docs/phase0-day2.md), and [Day 3 notes](docs/phase0-day3.md) for methods and limits.
@@ -42,7 +45,7 @@ For observation uncertainty, pass an [`ObservationPipeline`](src/mochi_sprout/si
 
 ## Learning path and contributions
 
-The long-term roadmap is to extend physics experiments, evaluate robot dynamics and learning, and only then work toward sim-to-real validation. Future features are proposals, not present capabilities. The [Day 1 learning gate](docs/learning-gates.md) and the human Day 2 and Day 3 learning gates have been recorded as passed.
+The long-term roadmap is to extend physics experiments, evaluate robot dynamics and learning, and only then work toward sim-to-real validation. Future features are proposals, not present capabilities. The [Day 1 learning gate](docs/learning-gates.md) and the human Day 2–4 learning gates have been recorded as passed.
 
 Contributors can help improve experiment clarity, tests, reproducibility, and quantitative evaluation. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Small, evidence-backed changes are welcome.
 

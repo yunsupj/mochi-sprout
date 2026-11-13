@@ -8,7 +8,7 @@ from typing import Protocol
 import mujoco
 
 from .pendulum import MJCF
-from .observation import ObservationPipeline
+from .observation import DeliveredObservation, DeliveryPipeline, ObservationPipeline
 
 
 @dataclass(frozen=True)
@@ -57,7 +57,7 @@ def run_episode(
     duration_s: float,
     controller_dt_s: float,
     model_config: PendulumModelConfig = PendulumModelConfig(),
-    observation: ObservationPipeline | None = None,
+    observation: ObservationPipeline | DeliveryPipeline | None = None,
 ) -> list[dict[str, float | bool]]:
     """Sample every physics step; hold each torque for one controller interval."""
     model = make_controlled_model(model_config)
@@ -89,6 +89,18 @@ def run_episode(
                     "measurement_time_s": sample.measurement_time_s,
                     "measurement_age_s": sample.age_s,
                 }
+                if isinstance(sample, DeliveredObservation):
+                    last_observation.update({
+                        "scheduled_delay_s": sample.scheduled_delay_s,
+                        "arrival_time_s": sample.arrival_time_s,
+                        "accepted_raw_rad": sample.accepted_raw_rad,
+                        "filtered_rad": sample.filtered_angle_rad,
+                        "accepted_count": sample.accepted_count,
+                        "dropped_count": sample.dropped_count,
+                        "out_of_order_count": sample.out_of_order_count,
+                        "stale": sample.stale,
+                        "used_initial_prior": sample.used_initial_prior,
+                    })
             data.ctrl[0] = (
                 0.0 if controller is None
                 else controller.update(
