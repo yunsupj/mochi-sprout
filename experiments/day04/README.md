@@ -45,3 +45,21 @@ uv run --locked --python 3.11 python -m mochi_sprout.experiments.day04 --output-
 ```
 
 The JSON timestamp changes on rerun. `run_scenario(Scenario("custom", noise_sd_deg=0.3, delays_ms=(20, 40, 60), alpha=0.5), seed=101)` permits custom scenarios; delay values must be controller-interval multiples. `DeliveryPipeline` and `EMA` do not import MuJoCo. No state predictor was implemented because the core combined case exposed instability that deserves bounded diagnosis before another mitigation is added. No filtering or jitter performance is validated on hardware.
+
+## Follow-up engineering diagnosis
+
+The [diagnostic summary](diagnostics.json) and [two-seed PID onset trace](diagnostic_onsets.csv) preserve the original nine-scenario `summary.json` and its figures. The diagnostics replay the controller without changing its output, independently reconstruct the delivery queue, and add three isolation scenarios. Run `uv run --locked --python 3.11 python -m mochi_sprout.experiments.day04_diagnostics --output-dir experiments/day04` to regenerate them.
+
+| Comparison, five seeds | Result | Max absolute true angle |
+|---|---|---:|
+| Noise + jitter, no filter | 5 settled | 30.3–34.5° |
+| Noise + jitter, EMA 0.2 | 4 exceeded ±360°; 1 unsettled | 344.8–419.4° |
+| Jitter + EMA 0.2, no noise | 5 exceeded ±360° | 377.1–420.7° |
+| Noise + fixed 50 ms + EMA 0.2 | 5 finite, unsettled | 46.3–47.6° |
+| Noise + jitter, EMA 0.8 | 5 settled | 30.2–35.0° |
+
+For jitter seed 11, 1,000 samples were generated; **995** arrived by the final 9.99 s controller decision, **425** were accepted, **570** were rejected as older than the latest accepted generation timestamp, and **5** remained pending. Across all five seeds the mean outdated count was **550.8**, or 55.36% of the 995 delivered samples. The denominator is delivered samples, not controller decisions. Simultaneous arrivals are processed in arrival-time then generation-index order. The accepted measurement timestamp gap averaged about 22–23 ms across seeds and reached 70–80 ms; the delivery interarrival average was about 10 ms and includes zero gaps when multiple messages arrived together. The count follows the specified discrete delay schedule and monotonic-timestamp policy; independent replay matched every accepted and dropped count.
+
+For failing seeds 11 and 23, the first **5° difference in true angle** from the paired unfiltered run occurred at simulated **0.686 s** and **0.684 s**. Seed 11 first crossed 90° at 1.668 s and 360° at 5.554 s; seed 23 crossed at 2.444 s and 5.030 s. At 0.690 s in seed 11, true angle was 28.04° and rising at 3.23 rad/s, but the last accepted measurement (generated at 0.660 s) gave filtered angle 11.89°. With no new accepted sample that tick, derivative contribution was 0; P supplied +1.896 N·m, candidate I +0.156 N·m, and output remained +2.052 N·m. Nearby accepted updates produced large negative derivative pulses (−3.795 N·m at 0.660 s; −5.681 N·m at 0.740 s), the latter clipping output at −3 N·m. Seed 23 showed the same stale/derivative-pulse pattern around 0.684 s. The complete raw, filtered, age, P/I/D, torque, and saturation records are in the CSV.
+
+**Root-cause assessment: confirmed for this simulated configuration.** Sparse, irregular accepted updates make EMA 0.2 lag the physical angle; the unchanged PID holds a positive P command on stale filtered values and gets derivative pulses when the filter moves after arrivals. The integral term was small near onset and anti-windup remained active; it is not the primary observed driver. Prolonged ±3 N·m saturation accompanies the growing physical oscillation. This is a closed-loop interaction, not an identified timestamp or queue defect. Paired runs use identical sampled delays and Gaussian noise residuals; filtering alone changes the controller input. The unlimited hinge means ±360° is real unwrapped motion, not plotting or angle-unit wrap. This configuration remains **unvalidated for hardware use**.

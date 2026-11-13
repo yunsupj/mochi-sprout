@@ -18,6 +18,8 @@ Suggested KO title: **PID 제어의 센서 노이즈 줄이기: MuJoCo 필터링
 
 **Verification:** The local full suite passed 35 tests and `uv lock --check --python 3.11` passed before PR creation. Two fresh experiment runs matched the committed JSON metrics, representative CSV, and all five figures, except for the recording timestamp. GitHub CI results belong in the PR handoff after the feature branch is pushed.
 
+**Follow-up diagnosis:** [Diagnostic JSON](../../experiments/day04/diagnostics.json) and [PID onset trace](../../experiments/day04/diagnostic_onsets.csv) show that the combined failure is genuine unwrapped MuJoCo motion. Jitter plus EMA 0.2 failed even without noise; fixed 50 ms plus noise and EMA 0.2 stayed finite but unsettled; EMA 0.8 with jitter and noise settled. Causal queue replay found 995 delivered samples per 1,000 generated, with 542–570 outdated drops across seeds. See the [engineering interpretation](../phase0-day4.md#focused-pr-3-instability-investigation). The original nine-scenario evidence is preserved.
+
 ```sh
 uv sync --locked --python 3.11
 uv run --locked --python 3.11 pytest -q
