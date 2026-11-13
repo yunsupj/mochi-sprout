@@ -1,0 +1,2349 @@
+{
+  "experiment_id": "day04-filtering-jitter",
+  "recorded_at": "2026-11-12T18:43:15.761169-08:00",
+  "source_base_revision": "3a7db4782c22612c77d93892bc88e80f9392b332",
+  "python_version": "3.11.8",
+  "mujoco_version": "3.17.0",
+  "config": {
+    "duration_s": 10.0,
+    "controller_dt_s": 0.01,
+    "step_time_s": 0.5,
+    "target_after_step_rad": 0.5235987755982988,
+    "settling_band_rad": 0.03490658503988659,
+    "steady_window_s": 2.0
+  },
+  "pid_config": {
+    "kp": 6.0,
+    "ki": 3.0,
+    "kd": 1.0,
+    "output_min": -3,
+    "output_max": 3
+  },
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "delay_policy": "Uniform discrete per-sample delay; process arrivals by arrival time then generation index; reject older measurement timestamps",
+  "filter_policy": "EMA initialized by first accepted sample; zero-angle prior before first delivery",
+  "results": {
+    "baseline": {
+      "scenario": {
+        "name": "baseline",
+        "noise_sd_deg": 0.0,
+        "delays_ms": [
+          0
+        ],
+        "alpha": 1.0
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.3131429588971128,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.629999999999767,
+          "rmse_after_step_deg": 4.299811342806088,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.123690099152906,
+          "saturation_fraction": 0.001,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 0.0,
+          "derivative_input_error_rms_rad_s": 0.0,
+          "rms_torque_change_nm_per_update": 0.09904453651357417,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.0,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        }
+      },
+      "aggregate": {
+        "seed_count": 1,
+        "status_counts": {
+          "finite_settled": 1
+        },
+        "settled_count": 1,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.3131429588971128,
+            "population_sd": 0.0,
+            "min": 0.3131429588971128,
+            "max": 0.3131429588971128,
+            "observed_count": 1
+          },
+          "overshoot_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "settling_time_s": {
+            "mean": 3.629999999999767,
+            "population_sd": 0.0,
+            "min": 3.629999999999767,
+            "max": 3.629999999999767,
+            "observed_count": 1
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.299811342806088,
+            "population_sd": 0.0,
+            "min": 4.299811342806088,
+            "max": 4.299811342806088,
+            "observed_count": 1
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 1
+          },
+          "rms_torque_nm": {
+            "mean": 1.123690099152906,
+            "population_sd": 0.0,
+            "min": 1.123690099152906,
+            "max": 1.123690099152906,
+            "observed_count": 1
+          },
+          "saturation_fraction": {
+            "mean": 0.001,
+            "population_sd": 0.0,
+            "min": 0.001,
+            "max": 0.001,
+            "observed_count": 1
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 0.09904453651357417,
+            "population_sd": 0.0,
+            "min": 0.09904453651357417,
+            "max": 0.09904453651357417,
+            "observed_count": 1
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "max_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "filtered_error_rms_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "accepted_count": {
+            "mean": 1000,
+            "population_sd": 0.0,
+            "min": 1000,
+            "max": 1000,
+            "observed_count": 1
+          },
+          "dropped_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 1
+          },
+          "out_of_order_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 1
+          },
+          "stale_decision_fraction": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "initial_prior_decisions": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 1
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          }
+        }
+      }
+    },
+    "noise_unfiltered": {
+      "scenario": {
+        "name": "noise_unfiltered",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          0
+        ],
+        "alpha": 1.0
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.4449170904557429,
+          "overshoot_deg": 0.06955678806808949,
+          "settling_time_s": 4.217999999999702,
+          "rmse_after_step_deg": 4.392713530124158,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.5085556413341532,
+          "saturation_fraction": 0.038,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40329645952236676,
+          "controller_observation_error_rms_deg": 0.40329645952236676,
+          "derivative_input_error_rms_rad_s": 0.9770848749541887,
+          "rms_torque_change_nm_per_update": 1.7007901095320255,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.40329645952236676,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "23": {
+          "steady_state_mae_deg": 0.30695984561976003,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 4.081999999999717,
+          "rmse_after_step_deg": 4.434590107822844,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.4898760915288551,
+          "saturation_fraction": 0.033,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39123842029608824,
+          "controller_observation_error_rms_deg": 0.39123842029608824,
+          "derivative_input_error_rms_rad_s": 0.9529811246646143,
+          "rms_torque_change_nm_per_update": 1.6992589714270407,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.39123842029608824,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "37": {
+          "steady_state_mae_deg": 0.4848424293183207,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 4.303999999999693,
+          "rmse_after_step_deg": 4.36634509861545,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.5158198590852925,
+          "saturation_fraction": 0.05,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40462686423038163,
+          "controller_observation_error_rms_deg": 0.40462686423038163,
+          "derivative_input_error_rms_rad_s": 0.9969019244571439,
+          "rms_torque_change_nm_per_update": 1.7596322623715726,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.40462686423038163,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "53": {
+          "steady_state_mae_deg": 0.4011690044920009,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 4.363999999999686,
+          "rmse_after_step_deg": 4.392233203029609,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.4970231176695186,
+          "saturation_fraction": 0.036,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39264102913481147,
+          "controller_observation_error_rms_deg": 0.39264102913481147,
+          "derivative_input_error_rms_rad_s": 0.9669719889616097,
+          "rms_torque_change_nm_per_update": 1.7085812705880323,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.39264102913481147,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "71": {
+          "steady_state_mae_deg": 0.3130314676413165,
+          "overshoot_deg": 0.06609805186439473,
+          "settling_time_s": 3.7919999999997493,
+          "rmse_after_step_deg": 4.392036379209892,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.5092907681234786,
+          "saturation_fraction": 0.038,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40596058712628186,
+          "controller_observation_error_rms_deg": 0.40596058712628186,
+          "derivative_input_error_rms_rad_s": 0.976266920290755,
+          "rms_torque_change_nm_per_update": 1.7088334764542172,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.40596058712628186,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "finite_settled": 5
+        },
+        "settled_count": 5,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.3901839675054282,
+            "population_sd": 0.07064753764597288,
+            "min": 0.30695984561976003,
+            "max": 0.4848424293183207,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 0.02713096798649684,
+            "population_sd": 0.033246509913660856,
+            "min": 0.0,
+            "max": 0.06955678806808949,
+            "observed_count": 5
+          },
+          "settling_time_s": {
+            "mean": 4.15199999999971,
+            "population_sd": 0.20342271259618697,
+            "min": 3.7919999999997493,
+            "max": 4.363999999999686,
+            "observed_count": 5
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.395583663760391,
+            "population_sd": 0.021947404639331692,
+            "min": 4.36634509861545,
+            "max": 4.434590107822844,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 1.5041130955482596,
+            "population_sd": 0.009344012934895958,
+            "min": 1.4898760915288551,
+            "max": 1.5158198590852925,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.039,
+            "population_sd": 0.0057965506984757765,
+            "min": 0.033,
+            "max": 0.05,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.39955267206198597,
+            "population_sd": 0.006288439179335955,
+            "min": 0.39123842029608824,
+            "max": 0.40596058712628186,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 0.39955267206198597,
+            "population_sd": 0.006288439179335955,
+            "min": 0.39123842029608824,
+            "max": 0.40596058712628186,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.9740413666656623,
+            "population_sd": 0.014355006293578727,
+            "min": 0.9529811246646143,
+            "max": 0.9969019244571439,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 1.7154192180745778,
+            "population_sd": 0.02245033270571255,
+            "min": 1.6992589714270407,
+            "max": 1.7596322623715726,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 0.39955267206198597,
+            "population_sd": 0.006288439179335955,
+            "min": 0.39123842029608824,
+            "max": 0.40596058712628186,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 1000,
+            "population_sd": 0.0,
+            "min": 1000,
+            "max": 1000,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          }
+        }
+      }
+    },
+    "noise_ema_0_8": {
+      "scenario": {
+        "name": "noise_ema_0_8",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          0
+        ],
+        "alpha": 0.8
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.35357076252712855,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.749999999999754,
+          "rmse_after_step_deg": 4.329342224038422,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.3598736700254832,
+          "saturation_fraction": 0.007,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40329645952236676,
+          "controller_observation_error_rms_deg": 0.3307752424030161,
+          "derivative_input_error_rms_rad_s": 0.7166513097074767,
+          "rms_torque_change_nm_per_update": 1.2344834349334877,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.3307752424030161,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "23": {
+          "steady_state_mae_deg": 0.32942726313896753,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.78599999999975,
+          "rmse_after_step_deg": 4.362523392842335,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.3408983943886064,
+          "saturation_fraction": 0.01,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39123842029608824,
+          "controller_observation_error_rms_deg": 0.32810327209525897,
+          "derivative_input_error_rms_rad_s": 0.6900965560282493,
+          "rms_torque_change_nm_per_update": 1.2238807601734718,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.32810327209525897,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "37": {
+          "steady_state_mae_deg": 0.3227342560681048,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.6439999999997656,
+          "rmse_after_step_deg": 4.2891206872441705,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.361865406147595,
+          "saturation_fraction": 0.006,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.4046268642303816,
+          "controller_observation_error_rms_deg": 0.3338336877716453,
+          "derivative_input_error_rms_rad_s": 0.7240561132386024,
+          "rms_torque_change_nm_per_update": 1.2747809023120118,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.3338336877716453,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "53": {
+          "steady_state_mae_deg": 0.3395534944795757,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 4.0719999999997185,
+          "rmse_after_step_deg": 4.320406786903573,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.3504723940126924,
+          "saturation_fraction": 0.009,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39264102913481147,
+          "controller_observation_error_rms_deg": 0.3219905246795749,
+          "derivative_input_error_rms_rad_s": 0.7028638521457522,
+          "rms_torque_change_nm_per_update": 1.2382537120005894,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.3219905246795749,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "71": {
+          "steady_state_mae_deg": 0.2474929202957799,
+          "overshoot_deg": 0.09483764669475203,
+          "settling_time_s": 3.7359999999997555,
+          "rmse_after_step_deg": 4.3157870097511175,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.3592213627364056,
+          "saturation_fraction": 0.006,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40596058712628186,
+          "controller_observation_error_rms_deg": 0.3385106771411324,
+          "derivative_input_error_rms_rad_s": 0.7151995489984998,
+          "rms_torque_change_nm_per_update": 1.2379977650435805,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.3385106771411324,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "finite_settled": 5
+        },
+        "settled_count": 5,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.3185557393019113,
+            "population_sd": 0.0370203507599992,
+            "min": 0.2474929202957799,
+            "max": 0.35357076252712855,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 0.018967529338950406,
+            "population_sd": 0.03793505867790081,
+            "min": 0.0,
+            "max": 0.09483764669475203,
+            "observed_count": 5
+          },
+          "settling_time_s": {
+            "mean": 3.7975999999997487,
+            "population_sd": 0.14497116954758754,
+            "min": 3.6439999999997656,
+            "max": 4.0719999999997185,
+            "observed_count": 5
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.323436020155923,
+            "population_sd": 0.023697812704730738,
+            "min": 4.2891206872441705,
+            "max": 4.362523392842335,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 1.3544662454621565,
+            "population_sd": 0.007831173497034683,
+            "min": 1.3408983943886064,
+            "max": 1.361865406147595,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.0076,
+            "population_sd": 0.001624807680927192,
+            "min": 0.006,
+            "max": 0.01,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.39955267206198597,
+            "population_sd": 0.006288439179335946,
+            "min": 0.39123842029608824,
+            "max": 0.40596058712628186,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 0.33064268081812553,
+            "population_sd": 0.005539203310904562,
+            "min": 0.3219905246795749,
+            "max": 0.3385106771411324,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.7097734760237161,
+            "population_sd": 0.011963817723152899,
+            "min": 0.6900965560282493,
+            "max": 0.7240561132386024,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 1.2418793148926281,
+            "population_sd": 0.017259043383833456,
+            "min": 1.2238807601734718,
+            "max": 1.2747809023120118,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 0.33064268081812553,
+            "population_sd": 0.005539203310904562,
+            "min": 0.3219905246795749,
+            "max": 0.3385106771411324,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 1000,
+            "population_sd": 0.0,
+            "min": 1000,
+            "max": 1000,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          }
+        }
+      }
+    },
+    "noise_ema_0_2": {
+      "scenario": {
+        "name": "noise_ema_0_2",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          0
+        ],
+        "alpha": 0.2
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.3257963005184716,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.795999999999749,
+          "rmse_after_step_deg": 4.14868452917175,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1517922464400425,
+          "saturation_fraction": 0.003,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40329645952236676,
+          "controller_observation_error_rms_deg": 0.6742635503125589,
+          "derivative_input_error_rms_rad_s": 0.1878841612039378,
+          "rms_torque_change_nm_per_update": 0.2440993394669836,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.6742635503125589,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "23": {
+          "steady_state_mae_deg": 0.32326449919822675,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.5719999999997736,
+          "rmse_after_step_deg": 4.178499803227881,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1505014070026243,
+          "saturation_fraction": 0.004,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39123842029608824,
+          "controller_observation_error_rms_deg": 0.7207672352051199,
+          "derivative_input_error_rms_rad_s": 0.18677867936074116,
+          "rms_torque_change_nm_per_update": 0.24193207359280733,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.7207672352051199,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "37": {
+          "steady_state_mae_deg": 0.2788365262954043,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.6639999999997634,
+          "rmse_after_step_deg": 4.1038036488500085,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1496345758277011,
+          "saturation_fraction": 0.002,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.4046268642303816,
+          "controller_observation_error_rms_deg": 0.7002258175842444,
+          "derivative_input_error_rms_rad_s": 0.18402682774682724,
+          "rms_torque_change_nm_per_update": 0.24959329968969418,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.7002258175842444,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "53": {
+          "steady_state_mae_deg": 0.3027407628460262,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.569999999999774,
+          "rmse_after_step_deg": 4.070518951070524,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.154152448176806,
+          "saturation_fraction": 0.001,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39264102913481147,
+          "controller_observation_error_rms_deg": 0.6802854687465612,
+          "derivative_input_error_rms_rad_s": 0.18726487779664472,
+          "rms_torque_change_nm_per_update": 0.2449038769168871,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.6802854687465612,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "71": {
+          "steady_state_mae_deg": 0.24758984044815555,
+          "overshoot_deg": 0.08557381446770483,
+          "settling_time_s": 3.5259999999997786,
+          "rmse_after_step_deg": 4.125995621455204,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1532866541466598,
+          "saturation_fraction": 0.003,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.4059605871262819,
+          "controller_observation_error_rms_deg": 0.7010553336043792,
+          "derivative_input_error_rms_rad_s": 0.18766504733302466,
+          "rms_torque_change_nm_per_update": 0.2448864886301619,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 0.7010553336043792,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "finite_settled": 5
+        },
+        "settled_count": 5,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.2956455858612569,
+            "population_sd": 0.029373834122900008,
+            "min": 0.24758984044815555,
+            "max": 0.3257963005184716,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 0.017114762893540966,
+            "population_sd": 0.03422952578708193,
+            "min": 0.0,
+            "max": 0.08557381446770483,
+            "observed_count": 5
+          },
+          "settling_time_s": {
+            "mean": 3.6255999999997677,
+            "population_sd": 0.09632777377266619,
+            "min": 3.5259999999997786,
+            "max": 3.795999999999749,
+            "observed_count": 5
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.1255005107550735,
+            "population_sd": 0.0369875507949404,
+            "min": 4.070518951070524,
+            "max": 4.178499803227881,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 1.1518734663187666,
+            "population_sd": 0.0016788467597058554,
+            "min": 1.1496345758277011,
+            "max": 1.154152448176806,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.0026,
+            "population_sd": 0.001019803902718557,
+            "min": 0.001,
+            "max": 0.004,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.39955267206198597,
+            "population_sd": 0.006288439179335957,
+            "min": 0.39123842029608824,
+            "max": 0.4059605871262819,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 0.6953194810905727,
+            "population_sd": 0.01657669496258001,
+            "min": 0.6742635503125589,
+            "max": 0.7207672352051199,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.18672391868823512,
+            "population_sd": 0.0014001300550832091,
+            "min": 0.18402682774682724,
+            "max": 0.1878841612039378,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 0.24508301565930682,
+            "population_sd": 0.0025023760850346665,
+            "min": 0.24193207359280733,
+            "max": 0.24959329968969418,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 0.6953194810905727,
+            "population_sd": 0.01657669496258001,
+            "min": 0.6742635503125589,
+            "max": 0.7207672352051199,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 1000,
+            "population_sd": 0.0,
+            "min": 1000,
+            "max": 1000,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          }
+        }
+      }
+    },
+    "noise_ema_0_1": {
+      "scenario": {
+        "name": "noise_ema_0_1",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          0
+        ],
+        "alpha": 0.1
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.30458237188098886,
+          "overshoot_deg": 5.184074575855262,
+          "settling_time_s": 3.5379999999997773,
+          "rmse_after_step_deg": 4.440387317214402,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1892636789610767,
+          "saturation_fraction": 0.003,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40329645952236676,
+          "controller_observation_error_rms_deg": 2.0266254029482433,
+          "derivative_input_error_rms_rad_s": 0.35783986122512024,
+          "rms_torque_change_nm_per_update": 0.14897335375736662,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 2.0266254029482433,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "23": {
+          "steady_state_mae_deg": 0.3098313773600159,
+          "overshoot_deg": 5.5050697354232545,
+          "settling_time_s": 3.5619999999997747,
+          "rmse_after_step_deg": 4.500717725133434,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.190489530788172,
+          "saturation_fraction": 0.004,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39123842029608824,
+          "controller_observation_error_rms_deg": 2.072440537317633,
+          "derivative_input_error_rms_rad_s": 0.36382465647658524,
+          "rms_torque_change_nm_per_update": 0.1487034520395542,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 2.072440537317633,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "37": {
+          "steady_state_mae_deg": 0.264661777432073,
+          "overshoot_deg": 5.478939308024285,
+          "settling_time_s": 3.5259999999997786,
+          "rmse_after_step_deg": 4.471336885727103,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1895509828971096,
+          "saturation_fraction": 0.003,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40462686423038147,
+          "controller_observation_error_rms_deg": 2.086317374242281,
+          "derivative_input_error_rms_rad_s": 0.3644348069246321,
+          "rms_torque_change_nm_per_update": 0.150130678420431,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 2.086317374242281,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "53": {
+          "steady_state_mae_deg": 0.2918477578929895,
+          "overshoot_deg": 5.34258654223144,
+          "settling_time_s": 3.531999999999778,
+          "rmse_after_step_deg": 4.384853080274551,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1898120337520677,
+          "saturation_fraction": 0.002,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.3926410291348114,
+          "controller_observation_error_rms_deg": 2.0181498754629175,
+          "derivative_input_error_rms_rad_s": 0.35511873502362606,
+          "rms_torque_change_nm_per_update": 0.15083512164492052,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 2.0181498754629175,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        },
+        "71": {
+          "steady_state_mae_deg": 0.2745521648987975,
+          "overshoot_deg": 5.148357452179716,
+          "settling_time_s": 3.9919999999997273,
+          "rmse_after_step_deg": 4.450992098588293,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1892673698845673,
+          "saturation_fraction": 0.004,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40596058712628186,
+          "controller_observation_error_rms_deg": 2.0464753899614245,
+          "derivative_input_error_rms_rad_s": 0.3570441606130394,
+          "rms_torque_change_nm_per_update": 0.1498715121498345,
+          "mean_measurement_age_s": 0.0,
+          "max_measurement_age_s": 0.0,
+          "filtered_error_rms_deg": 2.0464753899614245,
+          "accepted_count": 1000,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.0,
+          "initial_prior_decisions": 0,
+          "mean_scheduled_delay_s": 0.0
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "finite_settled": 5
+        },
+        "settled_count": 5,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.28909508989297295,
+            "population_sd": 0.017238968226716254,
+            "min": 0.264661777432073,
+            "max": 0.3098313773600159,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 5.331805522742791,
+            "population_sd": 0.14646685345828742,
+            "min": 5.148357452179716,
+            "max": 5.5050697354232545,
+            "observed_count": 5
+          },
+          "settling_time_s": {
+            "mean": 3.629999999999767,
+            "population_sd": 0.18141223773492446,
+            "min": 3.5259999999997786,
+            "max": 3.9919999999997273,
+            "observed_count": 5
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.449657421387557,
+            "population_sd": 0.03837830797305431,
+            "min": 4.384853080274551,
+            "max": 4.500717725133434,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 1.1896767192565987,
+            "population_sd": 0.000454522040114136,
+            "min": 1.1892636789610767,
+            "max": 1.190489530788172,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.0032,
+            "population_sd": 0.0007483314773547883,
+            "min": 0.002,
+            "max": 0.004,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.39955267206198597,
+            "population_sd": 0.00628843917933594,
+            "min": 0.39123842029608824,
+            "max": 0.40596058712628186,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 2.0500017159865,
+            "population_sd": 0.026060523665186013,
+            "min": 2.0181498754629175,
+            "max": 2.086317374242281,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.3596524440526006,
+            "population_sd": 0.0037662041292953904,
+            "min": 0.35511873502362606,
+            "max": 0.3644348069246321,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 0.14970282360242138,
+            "population_sd": 0.0007777511432176217,
+            "min": 0.1487034520395542,
+            "max": 0.15083512164492052,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 2.0500017159865,
+            "population_sd": 0.026060523665186013,
+            "min": 2.0181498754629175,
+            "max": 2.086317374242281,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 1000,
+            "population_sd": 0.0,
+            "min": 1000,
+            "max": 1000,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          }
+        }
+      }
+    },
+    "fixed_50ms": {
+      "scenario": {
+        "name": "fixed_50ms",
+        "noise_sd_deg": 0.0,
+        "delays_ms": [
+          50
+        ],
+        "alpha": 1.0
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.320797737335245,
+          "overshoot_deg": 0.0,
+          "settling_time_s": 3.7179999999997575,
+          "rmse_after_step_deg": 4.176729728420186,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1646166057865395,
+          "saturation_fraction": 0.006,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 1.0491182332074418,
+          "derivative_input_error_rms_rad_s": 0.23018039285442146,
+          "rms_torque_change_nm_per_update": 0.10852466600882381,
+          "mean_measurement_age_s": 0.049850000000000005,
+          "max_measurement_age_s": 0.05000000000000071,
+          "filtered_error_rms_deg": 1.0491182332074418,
+          "accepted_count": 995,
+          "dropped_count": 0,
+          "out_of_order_count": 0,
+          "stale_decision_fraction": 0.005,
+          "initial_prior_decisions": 5,
+          "mean_scheduled_delay_s": 0.05
+        }
+      },
+      "aggregate": {
+        "seed_count": 1,
+        "status_counts": {
+          "finite_settled": 1
+        },
+        "settled_count": 1,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.320797737335245,
+            "population_sd": 0.0,
+            "min": 0.320797737335245,
+            "max": 0.320797737335245,
+            "observed_count": 1
+          },
+          "overshoot_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "settling_time_s": {
+            "mean": 3.7179999999997575,
+            "population_sd": 0.0,
+            "min": 3.7179999999997575,
+            "max": 3.7179999999997575,
+            "observed_count": 1
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.176729728420186,
+            "population_sd": 0.0,
+            "min": 4.176729728420186,
+            "max": 4.176729728420186,
+            "observed_count": 1
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 1
+          },
+          "rms_torque_nm": {
+            "mean": 1.1646166057865395,
+            "population_sd": 0.0,
+            "min": 1.1646166057865395,
+            "max": 1.1646166057865395,
+            "observed_count": 1
+          },
+          "saturation_fraction": {
+            "mean": 0.006,
+            "population_sd": 0.0,
+            "min": 0.006,
+            "max": 0.006,
+            "observed_count": 1
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 1
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 1.0491182332074418,
+            "population_sd": 0.0,
+            "min": 1.0491182332074418,
+            "max": 1.0491182332074418,
+            "observed_count": 1
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.23018039285442146,
+            "population_sd": 0.0,
+            "min": 0.23018039285442146,
+            "max": 0.23018039285442146,
+            "observed_count": 1
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 0.10852466600882381,
+            "population_sd": 0.0,
+            "min": 0.10852466600882381,
+            "max": 0.10852466600882381,
+            "observed_count": 1
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.049850000000000005,
+            "population_sd": 0.0,
+            "min": 0.049850000000000005,
+            "max": 0.049850000000000005,
+            "observed_count": 1
+          },
+          "max_measurement_age_s": {
+            "mean": 0.05000000000000071,
+            "population_sd": 0.0,
+            "min": 0.05000000000000071,
+            "max": 0.05000000000000071,
+            "observed_count": 1
+          },
+          "filtered_error_rms_deg": {
+            "mean": 1.0491182332074418,
+            "population_sd": 0.0,
+            "min": 1.0491182332074418,
+            "max": 1.0491182332074418,
+            "observed_count": 1
+          },
+          "accepted_count": {
+            "mean": 995,
+            "population_sd": 0.0,
+            "min": 995,
+            "max": 995,
+            "observed_count": 1
+          },
+          "dropped_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 1
+          },
+          "out_of_order_count": {
+            "mean": 0,
+            "population_sd": 0.0,
+            "min": 0,
+            "max": 0,
+            "observed_count": 1
+          },
+          "stale_decision_fraction": {
+            "mean": 0.005,
+            "population_sd": 0.0,
+            "min": 0.005,
+            "max": 0.005,
+            "observed_count": 1
+          },
+          "initial_prior_decisions": {
+            "mean": 5,
+            "population_sd": 0.0,
+            "min": 5,
+            "max": 5,
+            "observed_count": 1
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.05,
+            "population_sd": 0.0,
+            "min": 0.05,
+            "max": 0.05,
+            "observed_count": 1
+          }
+        }
+      }
+    },
+    "jitter": {
+      "scenario": {
+        "name": "jitter",
+        "noise_sd_deg": 0.0,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 1.0
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.3531378589308269,
+          "overshoot_deg": 3.4953624543694097,
+          "settling_time_s": 3.931999999999734,
+          "rmse_after_step_deg": 4.618789346266446,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.2101996489853302,
+          "saturation_fraction": 0.019,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 0.8718191859120366,
+          "derivative_input_error_rms_rad_s": 0.6970256582628637,
+          "rms_torque_change_nm_per_update": 0.5707619466476451,
+          "mean_measurement_age_s": 0.032889999999999996,
+          "max_measurement_age_s": 0.0900000000000003,
+          "filtered_error_rms_deg": 0.8718191859120366,
+          "accepted_count": 425,
+          "dropped_count": 570,
+          "out_of_order_count": 570,
+          "stale_decision_fraction": 0.636,
+          "initial_prior_decisions": 3,
+          "mean_scheduled_delay_s": 0.05174
+        },
+        "23": {
+          "steady_state_mae_deg": 0.33805441800929636,
+          "overshoot_deg": 2.1909303954862542,
+          "settling_time_s": 3.859999999999742,
+          "rmse_after_step_deg": 4.320381107895347,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1911012343326943,
+          "saturation_fraction": 0.017,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 0.6899018661081993,
+          "derivative_input_error_rms_rad_s": 0.5367092361613228,
+          "rms_torque_change_nm_per_update": 0.5732681970552208,
+          "mean_measurement_age_s": 0.03134999999999999,
+          "max_measurement_age_s": 0.09000000000000075,
+          "filtered_error_rms_deg": 0.6899018661081993,
+          "accepted_count": 450,
+          "dropped_count": 545,
+          "out_of_order_count": 545,
+          "stale_decision_fraction": 0.604,
+          "initial_prior_decisions": 5,
+          "mean_scheduled_delay_s": 0.04908
+        },
+        "37": {
+          "steady_state_mae_deg": 0.35277978593228926,
+          "overshoot_deg": 3.505514973109217,
+          "settling_time_s": 3.911999999999736,
+          "rmse_after_step_deg": 4.6481094545235155,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.2130390214002598,
+          "saturation_fraction": 0.02,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 0.904897404510561,
+          "derivative_input_error_rms_rad_s": 0.7807569255855117,
+          "rms_torque_change_nm_per_update": 0.5921670824246964,
+          "mean_measurement_age_s": 0.03163999999999999,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 0.904897404510561,
+          "accepted_count": 450,
+          "dropped_count": 545,
+          "out_of_order_count": 545,
+          "stale_decision_fraction": 0.604,
+          "initial_prior_decisions": 1,
+          "mean_scheduled_delay_s": 0.04914
+        },
+        "53": {
+          "steady_state_mae_deg": 0.3576361809305364,
+          "overshoot_deg": 0.5381335002917047,
+          "settling_time_s": 4.005999999999726,
+          "rmse_after_step_deg": 4.318273609085385,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.1849406583542483,
+          "saturation_fraction": 0.016,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 0.5652274187721198,
+          "derivative_input_error_rms_rad_s": 0.5281881945849237,
+          "rms_torque_change_nm_per_update": 0.5571635378423601,
+          "mean_measurement_age_s": 0.03156000000000001,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 0.5652274187721198,
+          "accepted_count": 453,
+          "dropped_count": 542,
+          "out_of_order_count": 542,
+          "stale_decision_fraction": 0.617,
+          "initial_prior_decisions": 1,
+          "mean_scheduled_delay_s": 0.0497
+        },
+        "71": {
+          "steady_state_mae_deg": 0.3470732818696671,
+          "overshoot_deg": 3.089517955172659,
+          "settling_time_s": 3.9279999999997344,
+          "rmse_after_step_deg": 4.411713212870823,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.2010830638326493,
+          "saturation_fraction": 0.014,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.0,
+          "controller_observation_error_rms_deg": 0.7767755266146785,
+          "derivative_input_error_rms_rad_s": 0.6414501529279483,
+          "rms_torque_change_nm_per_update": 0.5807544285019282,
+          "mean_measurement_age_s": 0.03217000000000001,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 0.7767755266146785,
+          "accepted_count": 443,
+          "dropped_count": 552,
+          "out_of_order_count": 552,
+          "stale_decision_fraction": 0.61,
+          "initial_prior_decisions": 2,
+          "mean_scheduled_delay_s": 0.05058
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "finite_settled": 5
+        },
+        "settled_count": 5,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.3497363051345232,
+            "population_sd": 0.00673497677655475,
+            "min": 0.33805441800929636,
+            "max": 0.3576361809305364,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 2.5638918556858488,
+            "population_sd": 1.1201224516259938,
+            "min": 0.5381335002917047,
+            "max": 3.505514973109217,
+            "observed_count": 5
+          },
+          "settling_time_s": {
+            "mean": 3.9275999999997344,
+            "population_sd": 0.04685979086593874,
+            "min": 3.859999999999742,
+            "max": 4.005999999999726,
+            "observed_count": 5
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.463453346128303,
+            "population_sd": 0.14314399330528818,
+            "min": 4.318273609085385,
+            "max": 4.6481094545235155,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 1.2000727253810364,
+            "population_sd": 0.01078116229416686,
+            "min": 1.1849406583542483,
+            "max": 1.2130390214002598,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.0172,
+            "population_sd": 0.002135415650406262,
+            "min": 0.014,
+            "max": 0.02,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.0,
+            "population_sd": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 0.761724280383519,
+            "population_sd": 0.12378646737362417,
+            "min": 0.5652274187721198,
+            "max": 0.904897404510561,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.636826033504514,
+            "population_sd": 0.09611142715837337,
+            "min": 0.5281881945849237,
+            "max": 0.7807569255855117,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 0.5748230384943701,
+            "population_sd": 0.011547858757757849,
+            "min": 0.5571635378423601,
+            "max": 0.5921670824246964,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.031922,
+            "population_sd": 0.0005543067742685467,
+            "min": 0.03134999999999999,
+            "max": 0.032889999999999996,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.09000000000000012,
+            "population_sd": 3.552713678800501e-16,
+            "min": 0.08999999999999986,
+            "max": 0.09000000000000075,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 0.761724280383519,
+            "population_sd": 0.12378646737362417,
+            "min": 0.5652274187721198,
+            "max": 0.904897404510561,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 444.2,
+            "population_sd": 10.146920715172659,
+            "min": 425,
+            "max": 453,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 550.8,
+            "population_sd": 10.146920715172659,
+            "min": 542,
+            "max": 570,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 550.8,
+            "population_sd": 10.146920715172659,
+            "min": 542,
+            "max": 570,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.6142,
+            "population_sd": 0.011906300852909784,
+            "min": 0.604,
+            "max": 0.636,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 2.4,
+            "population_sd": 1.4966629547095767,
+            "min": 1,
+            "max": 5,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.050048,
+            "population_sd": 0.0010028439559572567,
+            "min": 0.04908,
+            "max": 0.05174,
+            "observed_count": 5
+          }
+        }
+      }
+    },
+    "combined_unfiltered": {
+      "scenario": {
+        "name": "combined_unfiltered",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 1.0
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 0.3915955253581932,
+          "overshoot_deg": 2.831623026947346,
+          "settling_time_s": 5.797999999999528,
+          "rmse_after_step_deg": 4.752486000158196,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.359998937983755,
+          "saturation_fraction": 0.037,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40329645952236676,
+          "controller_observation_error_rms_deg": 1.013018175899042,
+          "derivative_input_error_rms_rad_s": 0.9349894607789933,
+          "rms_torque_change_nm_per_update": 1.0844749577698078,
+          "mean_measurement_age_s": 0.032889999999999996,
+          "max_measurement_age_s": 0.0900000000000003,
+          "filtered_error_rms_deg": 1.013018175899042,
+          "accepted_count": 425,
+          "dropped_count": 570,
+          "out_of_order_count": 570,
+          "stale_decision_fraction": 0.636,
+          "initial_prior_decisions": 3,
+          "mean_scheduled_delay_s": 0.05174
+        },
+        "23": {
+          "steady_state_mae_deg": 0.3519587874265577,
+          "overshoot_deg": 0.3643916948136191,
+          "settling_time_s": 4.923999999999625,
+          "rmse_after_step_deg": 4.306205936627871,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.343032363660389,
+          "saturation_fraction": 0.028,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.3912384202960883,
+          "controller_observation_error_rms_deg": 0.748870323000661,
+          "derivative_input_error_rms_rad_s": 0.7673990054649773,
+          "rms_torque_change_nm_per_update": 1.0813396736228122,
+          "mean_measurement_age_s": 0.03134999999999999,
+          "max_measurement_age_s": 0.09000000000000075,
+          "filtered_error_rms_deg": 0.748870323000661,
+          "accepted_count": 450,
+          "dropped_count": 545,
+          "out_of_order_count": 545,
+          "stale_decision_fraction": 0.604,
+          "initial_prior_decisions": 5,
+          "mean_scheduled_delay_s": 0.04908
+        },
+        "37": {
+          "steady_state_mae_deg": 0.4816708872660199,
+          "overshoot_deg": 3.6300834497482883,
+          "settling_time_s": 5.103999999999605,
+          "rmse_after_step_deg": 4.797409708794244,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.358730089009386,
+          "saturation_fraction": 0.04,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.4046268642303816,
+          "controller_observation_error_rms_deg": 1.0756884275754062,
+          "derivative_input_error_rms_rad_s": 1.021420712917559,
+          "rms_torque_change_nm_per_update": 1.1095182531406156,
+          "mean_measurement_age_s": 0.03163999999999999,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 1.0756884275754062,
+          "accepted_count": 450,
+          "dropped_count": 545,
+          "out_of_order_count": 545,
+          "stale_decision_fraction": 0.604,
+          "initial_prior_decisions": 1,
+          "mean_scheduled_delay_s": 0.04914
+        },
+        "53": {
+          "steady_state_mae_deg": 0.38765884436650494,
+          "overshoot_deg": 0.274225764419064,
+          "settling_time_s": 5.075999999999608,
+          "rmse_after_step_deg": 4.369204999164083,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.3366958190645908,
+          "saturation_fraction": 0.029,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.39264102913481147,
+          "controller_observation_error_rms_deg": 0.6981374158226534,
+          "derivative_input_error_rms_rad_s": 0.798162511407764,
+          "rms_torque_change_nm_per_update": 1.0788844255222763,
+          "mean_measurement_age_s": 0.03156000000000001,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 0.6981374158226534,
+          "accepted_count": 453,
+          "dropped_count": 542,
+          "out_of_order_count": 542,
+          "stale_decision_fraction": 0.617,
+          "initial_prior_decisions": 1,
+          "mean_scheduled_delay_s": 0.0497
+        },
+        "71": {
+          "steady_state_mae_deg": 0.33298013209840416,
+          "overshoot_deg": 4.549338739389202,
+          "settling_time_s": 3.993999999999727,
+          "rmse_after_step_deg": 4.5978928023580865,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 1.3721313319259496,
+          "saturation_fraction": 0.03,
+          "status": "finite_settled",
+          "raw_sensor_error_rms_deg": 0.40596058712628197,
+          "controller_observation_error_rms_deg": 1.0004536827735977,
+          "derivative_input_error_rms_rad_s": 0.9629445203538208,
+          "rms_torque_change_nm_per_update": 1.1419337771356224,
+          "mean_measurement_age_s": 0.03217000000000001,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 1.0004536827735977,
+          "accepted_count": 443,
+          "dropped_count": 552,
+          "out_of_order_count": 552,
+          "stale_decision_fraction": 0.61,
+          "initial_prior_decisions": 2,
+          "mean_scheduled_delay_s": 0.05058
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "finite_settled": 5
+        },
+        "settled_count": 5,
+        "unsettled_count": 0,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 0.38917283530313596,
+            "population_sd": 0.051198743081061655,
+            "min": 0.33298013209840416,
+            "max": 0.4816708872660199,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 2.329932535063504,
+            "population_sd": 1.7295739806070944,
+            "min": 0.274225764419064,
+            "max": 4.549338739389202,
+            "observed_count": 5
+          },
+          "settling_time_s": {
+            "mean": 4.979199999999619,
+            "population_sd": 0.5777620271356767,
+            "min": 3.993999999999727,
+            "max": 5.797999999999528,
+            "observed_count": 5
+          },
+          "rmse_after_step_deg": {
+            "mean": 4.564639889420496,
+            "population_sd": 0.19776582648928992,
+            "min": 4.306205936627871,
+            "max": 4.797409708794244,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 1.354117708328814,
+            "population_sd": 0.012702445786922992,
+            "min": 1.3366958190645908,
+            "max": 1.3721313319259496,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.0328,
+            "population_sd": 0.004791659420284375,
+            "min": 0.028,
+            "max": 0.04,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.399552672061986,
+            "population_sd": 0.006288439179335954,
+            "min": 0.3912384202960883,
+            "max": 0.40596058712628197,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 0.9072336050142721,
+            "population_sd": 0.15300818997910698,
+            "min": 0.6981374158226534,
+            "max": 1.0756884275754062,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 0.8969832421846229,
+            "population_sd": 0.09781376000282709,
+            "min": 0.7673990054649773,
+            "max": 1.021420712917559,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 1.099230217438227,
+            "population_sd": 0.02400490859813281,
+            "min": 1.0788844255222763,
+            "max": 1.1419337771356224,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.031922,
+            "population_sd": 0.0005543067742685467,
+            "min": 0.03134999999999999,
+            "max": 0.032889999999999996,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.09000000000000012,
+            "population_sd": 3.552713678800501e-16,
+            "min": 0.08999999999999986,
+            "max": 0.09000000000000075,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 0.9072336050142721,
+            "population_sd": 0.15300818997910698,
+            "min": 0.6981374158226534,
+            "max": 1.0756884275754062,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 444.2,
+            "population_sd": 10.146920715172659,
+            "min": 425,
+            "max": 453,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 550.8,
+            "population_sd": 10.146920715172659,
+            "min": 542,
+            "max": 570,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 550.8,
+            "population_sd": 10.146920715172659,
+            "min": 542,
+            "max": 570,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.6142,
+            "population_sd": 0.011906300852909784,
+            "min": 0.604,
+            "max": 0.636,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 2.4,
+            "population_sd": 1.4966629547095767,
+            "min": 1,
+            "max": 5,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.050048,
+            "population_sd": 0.0010028439559572567,
+            "min": 0.04908,
+            "max": 0.05174,
+            "observed_count": 5
+          }
+        }
+      }
+    },
+    "combined_ema_0_2": {
+      "scenario": {
+        "name": "combined_ema_0_2",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 0.2
+      },
+      "per_seed": {
+        "11": {
+          "steady_state_mae_deg": 290.4673720356972,
+          "overshoot_deg": 389.4320240602132,
+          "settling_time_s": null,
+          "rmse_after_step_deg": 219.35640375348575,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 2.806153925309025,
+          "saturation_fraction": 0.825,
+          "status": "failed_nonfinite_or_over_360deg",
+          "raw_sensor_error_rms_deg": 0.4032964595223668,
+          "controller_observation_error_rms_deg": 71.23330950969621,
+          "derivative_input_error_rms_rad_s": 13.665856273645428,
+          "rms_torque_change_nm_per_update": 2.2218771327623985,
+          "mean_measurement_age_s": 0.032889999999999996,
+          "max_measurement_age_s": 0.0900000000000003,
+          "filtered_error_rms_deg": 71.23330950969621,
+          "accepted_count": 425,
+          "dropped_count": 570,
+          "out_of_order_count": 570,
+          "stale_decision_fraction": 0.636,
+          "initial_prior_decisions": 3,
+          "mean_scheduled_delay_s": 0.05174
+        },
+        "23": {
+          "steady_state_mae_deg": 239.48411992286415,
+          "overshoot_deg": 353.6620324804217,
+          "settling_time_s": null,
+          "rmse_after_step_deg": 186.71566582157388,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 2.7516863050549554,
+          "saturation_fraction": 0.798,
+          "status": "failed_nonfinite_or_over_360deg",
+          "raw_sensor_error_rms_deg": 0.3912384202960879,
+          "controller_observation_error_rms_deg": 50.43588268661002,
+          "derivative_input_error_rms_rad_s": 9.91255283938239,
+          "rms_torque_change_nm_per_update": 1.8584313560476107,
+          "mean_measurement_age_s": 0.03134999999999999,
+          "max_measurement_age_s": 0.09000000000000075,
+          "filtered_error_rms_deg": 50.43588268661002,
+          "accepted_count": 450,
+          "dropped_count": 545,
+          "out_of_order_count": 545,
+          "stale_decision_fraction": 0.604,
+          "initial_prior_decisions": 5,
+          "mean_scheduled_delay_s": 0.04908
+        },
+        "37": {
+          "steady_state_mae_deg": 282.77356130426983,
+          "overshoot_deg": 380.6067827502465,
+          "settling_time_s": null,
+          "rmse_after_step_deg": 216.83278812529696,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 2.799813009173644,
+          "saturation_fraction": 0.834,
+          "status": "failed_nonfinite_or_over_360deg",
+          "raw_sensor_error_rms_deg": 0.4046268642303816,
+          "controller_observation_error_rms_deg": 61.62842435543855,
+          "derivative_input_error_rms_rad_s": 12.535967437074586,
+          "rms_torque_change_nm_per_update": 2.151136243758537,
+          "mean_measurement_age_s": 0.03163999999999999,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 61.62842435543855,
+          "accepted_count": 450,
+          "dropped_count": 545,
+          "out_of_order_count": 545,
+          "stale_decision_fraction": 0.604,
+          "initial_prior_decisions": 1,
+          "mean_scheduled_delay_s": 0.04914
+        },
+        "53": {
+          "steady_state_mae_deg": 198.22491744627482,
+          "overshoot_deg": 314.84313229421275,
+          "settling_time_s": null,
+          "rmse_after_step_deg": 146.75751678463666,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 2.776106324457377,
+          "saturation_fraction": 0.805,
+          "status": "finite_unsettled",
+          "raw_sensor_error_rms_deg": 0.39264102913481147,
+          "controller_observation_error_rms_deg": 47.67298033501212,
+          "derivative_input_error_rms_rad_s": 9.884765671546374,
+          "rms_torque_change_nm_per_update": 2.101012231793926,
+          "mean_measurement_age_s": 0.03156000000000001,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 47.67298033501212,
+          "accepted_count": 453,
+          "dropped_count": 542,
+          "out_of_order_count": 542,
+          "stale_decision_fraction": 0.617,
+          "initial_prior_decisions": 1,
+          "mean_scheduled_delay_s": 0.0497
+        },
+        "71": {
+          "steady_state_mae_deg": 197.65838035277667,
+          "overshoot_deg": 340.6010409365262,
+          "settling_time_s": null,
+          "rmse_after_step_deg": 188.3176125475913,
+          "max_abs_torque_nm": 3.0,
+          "rms_torque_nm": 2.7485474717094442,
+          "saturation_fraction": 0.793,
+          "status": "failed_nonfinite_or_over_360deg",
+          "raw_sensor_error_rms_deg": 0.4059605871262818,
+          "controller_observation_error_rms_deg": 54.53690491275816,
+          "derivative_input_error_rms_rad_s": 10.737721685172117,
+          "rms_torque_change_nm_per_update": 2.092400978384098,
+          "mean_measurement_age_s": 0.03217000000000001,
+          "max_measurement_age_s": 0.08999999999999986,
+          "filtered_error_rms_deg": 54.53690491275816,
+          "accepted_count": 443,
+          "dropped_count": 552,
+          "out_of_order_count": 552,
+          "stale_decision_fraction": 0.61,
+          "initial_prior_decisions": 2,
+          "mean_scheduled_delay_s": 0.05058
+        }
+      },
+      "aggregate": {
+        "seed_count": 5,
+        "status_counts": {
+          "failed_nonfinite_or_over_360deg": 4,
+          "finite_unsettled": 1
+        },
+        "settled_count": 0,
+        "unsettled_count": 5,
+        "numeric": {
+          "steady_state_mae_deg": {
+            "mean": 241.72167021237655,
+            "population_sd": 39.74908515730481,
+            "min": 197.65838035277667,
+            "max": 290.4673720356972,
+            "observed_count": 5
+          },
+          "overshoot_deg": {
+            "mean": 355.8290025043241,
+            "population_sd": 27.05375974268895,
+            "min": 314.84313229421275,
+            "max": 389.4320240602132,
+            "observed_count": 5
+          },
+          "settling_time_s": null,
+          "rmse_after_step_deg": {
+            "mean": 191.59599740651691,
+            "population_sd": 26.27771129483421,
+            "min": 146.75751678463666,
+            "max": 219.35640375348575,
+            "observed_count": 5
+          },
+          "max_abs_torque_nm": {
+            "mean": 3.0,
+            "population_sd": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "observed_count": 5
+          },
+          "rms_torque_nm": {
+            "mean": 2.7764614071408893,
+            "population_sd": 0.023748947391464263,
+            "min": 2.7485474717094442,
+            "max": 2.806153925309025,
+            "observed_count": 5
+          },
+          "saturation_fraction": {
+            "mean": 0.811,
+            "population_sd": 0.015836666315863286,
+            "min": 0.793,
+            "max": 0.834,
+            "observed_count": 5
+          },
+          "raw_sensor_error_rms_deg": {
+            "mean": 0.3995526720619859,
+            "population_sd": 0.006288439179336029,
+            "min": 0.3912384202960879,
+            "max": 0.4059605871262818,
+            "observed_count": 5
+          },
+          "controller_observation_error_rms_deg": {
+            "mean": 57.101500359903014,
+            "population_sd": 8.486526607998524,
+            "min": 47.67298033501212,
+            "max": 71.23330950969621,
+            "observed_count": 5
+          },
+          "derivative_input_error_rms_rad_s": {
+            "mean": 11.347372781364179,
+            "population_sd": 1.5071645724505602,
+            "min": 9.884765671546374,
+            "max": 13.665856273645428,
+            "observed_count": 5
+          },
+          "rms_torque_change_nm_per_update": {
+            "mean": 2.084971588549314,
+            "population_sd": 0.12227335330821686,
+            "min": 1.8584313560476107,
+            "max": 2.2218771327623985,
+            "observed_count": 5
+          },
+          "mean_measurement_age_s": {
+            "mean": 0.031922,
+            "population_sd": 0.0005543067742685467,
+            "min": 0.03134999999999999,
+            "max": 0.032889999999999996,
+            "observed_count": 5
+          },
+          "max_measurement_age_s": {
+            "mean": 0.09000000000000012,
+            "population_sd": 3.552713678800501e-16,
+            "min": 0.08999999999999986,
+            "max": 0.09000000000000075,
+            "observed_count": 5
+          },
+          "filtered_error_rms_deg": {
+            "mean": 57.101500359903014,
+            "population_sd": 8.486526607998524,
+            "min": 47.67298033501212,
+            "max": 71.23330950969621,
+            "observed_count": 5
+          },
+          "accepted_count": {
+            "mean": 444.2,
+            "population_sd": 10.146920715172659,
+            "min": 425,
+            "max": 453,
+            "observed_count": 5
+          },
+          "dropped_count": {
+            "mean": 550.8,
+            "population_sd": 10.146920715172659,
+            "min": 542,
+            "max": 570,
+            "observed_count": 5
+          },
+          "out_of_order_count": {
+            "mean": 550.8,
+            "population_sd": 10.146920715172659,
+            "min": 542,
+            "max": 570,
+            "observed_count": 5
+          },
+          "stale_decision_fraction": {
+            "mean": 0.6142,
+            "population_sd": 0.011906300852909784,
+            "min": 0.604,
+            "max": 0.636,
+            "observed_count": 5
+          },
+          "initial_prior_decisions": {
+            "mean": 2.4,
+            "population_sd": 1.4966629547095767,
+            "min": 1,
+            "max": 5,
+            "observed_count": 5
+          },
+          "mean_scheduled_delay_s": {
+            "mean": 0.050048,
+            "population_sd": 0.0010028439559572567,
+            "min": 0.04908,
+            "max": 0.05174,
+            "observed_count": 5
+          }
+        }
+      }
+    }
+  }
+}

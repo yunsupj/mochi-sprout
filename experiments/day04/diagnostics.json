@@ -1,0 +1,943 @@
+{
+  "experiment_id": "day04-combined-instability-diagnosis",
+  "source_day04_commit": "0783b954ce235333a4432c5ad2a75c4df6d5d818",
+  "divergence_rule": "first physics sample after target step with >=5 deg true-angle difference from paired unfiltered run",
+  "trace_rule": "eleven controller updates centered on the threshold crossing; PID terms computed from pre-update state, then original PID.update called",
+  "seeds": [
+    11,
+    23,
+    37,
+    53,
+    71
+  ],
+  "results": {
+    "combined_unfiltered": {
+      "scenario": {
+        "name": "combined_unfiltered",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 1.0
+      },
+      "per_seed": {
+        "11": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.3915955253581932,
+          "max_abs_true_angle_deg": 32.83162302694734,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.037,
+          "saturated_controller_updates": 37,
+          "saturation_duration_s": 0.37,
+          "mean_observation_age_s": 0.032889999999999996,
+          "max_observation_age_s": 0.0900000000000003,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 425,
+            "dropped_outdated": 570,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5728643216080402,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01001006036217304,
+              "max_s": 0.050000000000000266,
+              "zero_count": 259
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 424,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.02341981132075472,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "23": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.3519587874265577,
+          "max_abs_true_angle_deg": 30.364391694813616,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.028,
+          "saturated_controller_updates": 28,
+          "saturation_duration_s": 0.28,
+          "mean_observation_age_s": 0.03134999999999999,
+          "max_observation_age_s": 0.09000000000000075,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01,
+              "max_s": 0.05999999999999994,
+              "zero_count": 241
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022138084632516705,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "37": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.4816708872660199,
+          "max_abs_true_angle_deg": 33.630083449748284,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.04,
+          "saturated_controller_updates": 40,
+          "saturation_duration_s": 0.4,
+          "mean_observation_age_s": 0.03163999999999999,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010030181086519116,
+              "max_s": 0.050000000000000044,
+              "zero_count": 237
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022160356347438754,
+              "max_s": 0.07999999999999996,
+              "zero_count": 0
+            }
+          }
+        },
+        "53": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.38765884436650494,
+          "max_abs_true_angle_deg": 30.27422576441906,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.029,
+          "saturated_controller_updates": 29,
+          "saturation_duration_s": 0.29,
+          "mean_observation_age_s": 0.03156000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 453,
+            "dropped_outdated": 542,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5447236180904522,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010040241448692153,
+              "max_s": 0.0600000000000005,
+              "zero_count": 242
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 452,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022035398230088498,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "71": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.33298013209840416,
+          "max_abs_true_angle_deg": 34.5493387393892,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.03,
+          "saturated_controller_updates": 30,
+          "saturation_duration_s": 0.3,
+          "mean_observation_age_s": 0.03217000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 443,
+            "dropped_outdated": 552,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5547738693467337,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010020120724346077,
+              "max_s": 0.05000000000000071,
+              "zero_count": 227
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 442,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022511312217194573,
+              "max_s": 0.08000000000000007,
+              "zero_count": 0
+            }
+          }
+        }
+      }
+    },
+    "combined_ema_0_2": {
+      "scenario": {
+        "name": "combined_ema_0_2",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 0.2
+      },
+      "per_seed": {
+        "11": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 290.4673720356972,
+          "max_abs_true_angle_deg": 419.4320240602132,
+          "first_abs_90deg_time_s": 1.6680000000000013,
+          "first_abs_360deg_time_s": 5.55399999999961,
+          "saturation_fraction": 0.825,
+          "saturated_controller_updates": 825,
+          "saturation_duration_s": 8.25,
+          "mean_observation_age_s": 0.032889999999999996,
+          "max_observation_age_s": 0.0900000000000003,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 425,
+            "dropped_outdated": 570,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5728643216080402,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01001006036217304,
+              "max_s": 0.050000000000000266,
+              "zero_count": 259
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 424,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.02341981132075472,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          },
+          "first_5deg_divergence_time_s": 0.6860000000000005
+        },
+        "23": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 239.48411992286415,
+          "max_abs_true_angle_deg": 383.6620324804217,
+          "first_abs_90deg_time_s": 2.4439999999999524,
+          "first_abs_360deg_time_s": 5.029999999999668,
+          "saturation_fraction": 0.798,
+          "saturated_controller_updates": 798,
+          "saturation_duration_s": 7.98,
+          "mean_observation_age_s": 0.03134999999999999,
+          "max_observation_age_s": 0.09000000000000075,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01,
+              "max_s": 0.05999999999999994,
+              "zero_count": 241
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022138084632516705,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          },
+          "first_5deg_divergence_time_s": 0.6840000000000005
+        },
+        "37": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 282.77356130426983,
+          "max_abs_true_angle_deg": 410.60678275024657,
+          "first_abs_90deg_time_s": 2.447999999999952,
+          "first_abs_360deg_time_s": 5.501999999999616,
+          "saturation_fraction": 0.834,
+          "saturated_controller_updates": 834,
+          "saturation_duration_s": 8.34,
+          "mean_observation_age_s": 0.03163999999999999,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010030181086519116,
+              "max_s": 0.050000000000000044,
+              "zero_count": 237
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022160356347438754,
+              "max_s": 0.07999999999999996,
+              "zero_count": 0
+            }
+          }
+        },
+        "53": {
+          "status": "finite_unsettled",
+          "final_window_mae_deg": 198.22491744627482,
+          "max_abs_true_angle_deg": 344.84313229421275,
+          "first_abs_90deg_time_s": 2.483999999999948,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.805,
+          "saturated_controller_updates": 805,
+          "saturation_duration_s": 8.05,
+          "mean_observation_age_s": 0.03156000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 453,
+            "dropped_outdated": 542,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5447236180904522,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010040241448692153,
+              "max_s": 0.0600000000000005,
+              "zero_count": 242
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 452,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022035398230088498,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "71": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 197.65838035277667,
+          "max_abs_true_angle_deg": 370.6010409365262,
+          "first_abs_90deg_time_s": 2.473999999999949,
+          "first_abs_360deg_time_s": 9.039999999999688,
+          "saturation_fraction": 0.793,
+          "saturated_controller_updates": 793,
+          "saturation_duration_s": 7.930000000000001,
+          "mean_observation_age_s": 0.03217000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 443,
+            "dropped_outdated": 552,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5547738693467337,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010020120724346077,
+              "max_s": 0.05000000000000071,
+              "zero_count": 227
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 442,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022511312217194573,
+              "max_s": 0.08000000000000007,
+              "zero_count": 0
+            }
+          }
+        }
+      }
+    },
+    "jitter_ema_0_2_no_noise": {
+      "scenario": {
+        "name": "jitter_ema_0_2_no_noise",
+        "noise_sd_deg": 0.0,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 0.2
+      },
+      "per_seed": {
+        "11": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 227.32321700514888,
+          "max_abs_true_angle_deg": 420.65071103428295,
+          "first_abs_90deg_time_s": 1.6520000000000012,
+          "first_abs_360deg_time_s": 6.031999999999558,
+          "saturation_fraction": 0.839,
+          "saturated_controller_updates": 839,
+          "saturation_duration_s": 8.39,
+          "mean_observation_age_s": 0.032889999999999996,
+          "max_observation_age_s": 0.0900000000000003,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 425,
+            "dropped_outdated": 570,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5728643216080402,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01001006036217304,
+              "max_s": 0.050000000000000266,
+              "zero_count": 259
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 424,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.02341981132075472,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "23": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 174.41639798729832,
+          "max_abs_true_angle_deg": 377.1241835241983,
+          "first_abs_90deg_time_s": 2.4259999999999544,
+          "first_abs_360deg_time_s": 5.033999999999668,
+          "saturation_fraction": 0.802,
+          "saturated_controller_updates": 802,
+          "saturation_duration_s": 8.02,
+          "mean_observation_age_s": 0.03134999999999999,
+          "max_observation_age_s": 0.09000000000000075,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01,
+              "max_s": 0.05999999999999994,
+              "zero_count": 241
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022138084632516705,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "37": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 245.58864967354893,
+          "max_abs_true_angle_deg": 396.1033182937237,
+          "first_abs_90deg_time_s": 2.447999999999952,
+          "first_abs_360deg_time_s": 5.5439999999996115,
+          "saturation_fraction": 0.828,
+          "saturated_controller_updates": 828,
+          "saturation_duration_s": 8.28,
+          "mean_observation_age_s": 0.03163999999999999,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010030181086519116,
+              "max_s": 0.050000000000000044,
+              "zero_count": 237
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022160356347438754,
+              "max_s": 0.07999999999999996,
+              "zero_count": 0
+            }
+          }
+        },
+        "53": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 282.99294970465917,
+          "max_abs_true_angle_deg": 400.13427628352747,
+          "first_abs_90deg_time_s": 2.4499999999999518,
+          "first_abs_360deg_time_s": 8.141999999999388,
+          "saturation_fraction": 0.826,
+          "saturated_controller_updates": 826,
+          "saturation_duration_s": 8.26,
+          "mean_observation_age_s": 0.03156000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 453,
+            "dropped_outdated": 542,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5447236180904522,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010040241448692153,
+              "max_s": 0.0600000000000005,
+              "zero_count": 242
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 452,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022035398230088498,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "71": {
+          "status": "failed_nonfinite_or_over_360deg",
+          "final_window_mae_deg": 224.22718386508632,
+          "max_abs_true_angle_deg": 419.8541447281271,
+          "first_abs_90deg_time_s": 2.473999999999949,
+          "first_abs_360deg_time_s": 9.093999999999706,
+          "saturation_fraction": 0.806,
+          "saturated_controller_updates": 806,
+          "saturation_duration_s": 8.06,
+          "mean_observation_age_s": 0.03217000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 443,
+            "dropped_outdated": 552,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5547738693467337,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010020120724346077,
+              "max_s": 0.05000000000000071,
+              "zero_count": 227
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 442,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022511312217194573,
+              "max_s": 0.08000000000000007,
+              "zero_count": 0
+            }
+          }
+        }
+      }
+    },
+    "fixed_50ms_noise_ema_0_2": {
+      "scenario": {
+        "name": "fixed_50ms_noise_ema_0_2",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          50
+        ],
+        "alpha": 0.2
+      },
+      "per_seed": {
+        "11": {
+          "status": "finite_unsettled",
+          "final_window_mae_deg": 14.878676707808578,
+          "max_abs_true_angle_deg": 46.80751908062159,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.413,
+          "saturated_controller_updates": 413,
+          "saturation_duration_s": 4.13,
+          "mean_observation_age_s": 0.049850000000000005,
+          "max_observation_age_s": 0.05000000000000071,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 995,
+            "dropped_outdated": 0,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.0,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            }
+          }
+        },
+        "23": {
+          "status": "finite_unsettled",
+          "final_window_mae_deg": 14.279488876155918,
+          "max_abs_true_angle_deg": 46.34963795071821,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.402,
+          "saturated_controller_updates": 402,
+          "saturation_duration_s": 4.0200000000000005,
+          "mean_observation_age_s": 0.049850000000000005,
+          "max_observation_age_s": 0.05000000000000071,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 995,
+            "dropped_outdated": 0,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.0,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            }
+          }
+        },
+        "37": {
+          "status": "finite_unsettled",
+          "final_window_mae_deg": 15.148761482046735,
+          "max_abs_true_angle_deg": 47.620092074676144,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.413,
+          "saturated_controller_updates": 413,
+          "saturation_duration_s": 4.13,
+          "mean_observation_age_s": 0.049850000000000005,
+          "max_observation_age_s": 0.05000000000000071,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 995,
+            "dropped_outdated": 0,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.0,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            }
+          }
+        },
+        "53": {
+          "status": "finite_unsettled",
+          "final_window_mae_deg": 14.302897779710023,
+          "max_abs_true_angle_deg": 46.71620107586653,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.392,
+          "saturated_controller_updates": 392,
+          "saturation_duration_s": 3.92,
+          "mean_observation_age_s": 0.049850000000000005,
+          "max_observation_age_s": 0.05000000000000071,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 995,
+            "dropped_outdated": 0,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.0,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            }
+          }
+        },
+        "71": {
+          "status": "finite_unsettled",
+          "final_window_mae_deg": 13.861594951690993,
+          "max_abs_true_angle_deg": 46.61937846205349,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.411,
+          "saturated_controller_updates": 411,
+          "saturation_duration_s": 4.11,
+          "mean_observation_age_s": 0.049850000000000005,
+          "max_observation_age_s": 0.05000000000000071,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 995,
+            "dropped_outdated": 0,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.0,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 994,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.01,
+              "max_s": 0.010000000000001563,
+              "zero_count": 0
+            }
+          }
+        }
+      }
+    },
+    "jitter_noise_ema_0_8": {
+      "scenario": {
+        "name": "jitter_noise_ema_0_8",
+        "noise_sd_deg": 0.4,
+        "delays_ms": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "alpha": 0.8
+      },
+      "per_seed": {
+        "11": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.35931369042054434,
+          "max_abs_true_angle_deg": 32.17988307902078,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.03,
+          "saturated_controller_updates": 30,
+          "saturation_duration_s": 0.3,
+          "mean_observation_age_s": 0.032889999999999996,
+          "max_observation_age_s": 0.0900000000000003,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 425,
+            "dropped_outdated": 570,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5728643216080402,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01001006036217304,
+              "max_s": 0.050000000000000266,
+              "zero_count": 259
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 424,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.02341981132075472,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "23": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.33086336584850223,
+          "max_abs_true_angle_deg": 30.2342458751137,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.024,
+          "saturated_controller_updates": 24,
+          "saturation_duration_s": 0.24,
+          "mean_observation_age_s": 0.03134999999999999,
+          "max_observation_age_s": 0.09000000000000075,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.01,
+              "max_s": 0.05999999999999994,
+              "zero_count": 241
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022138084632516705,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "37": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.4183644077343922,
+          "max_abs_true_angle_deg": 34.23400727151019,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.032,
+          "saturated_controller_updates": 32,
+          "saturation_duration_s": 0.32,
+          "mean_observation_age_s": 0.03163999999999999,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 450,
+            "dropped_outdated": 545,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5477386934673367,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010030181086519116,
+              "max_s": 0.050000000000000044,
+              "zero_count": 237
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 449,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022160356347438754,
+              "max_s": 0.07999999999999996,
+              "zero_count": 0
+            }
+          }
+        },
+        "53": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.35808613615904133,
+          "max_abs_true_angle_deg": 30.25467690400055,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.02,
+          "saturated_controller_updates": 20,
+          "saturation_duration_s": 0.2,
+          "mean_observation_age_s": 0.03156000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 453,
+            "dropped_outdated": 542,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5447236180904522,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010040241448692153,
+              "max_s": 0.0600000000000005,
+              "zero_count": 242
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 452,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022035398230088498,
+              "max_s": 0.07000000000000028,
+              "zero_count": 0
+            }
+          }
+        },
+        "71": {
+          "status": "finite_settled",
+          "final_window_mae_deg": 0.313509389152522,
+          "max_abs_true_angle_deg": 34.99928962311529,
+          "first_abs_90deg_time_s": null,
+          "first_abs_360deg_time_s": null,
+          "saturation_fraction": 0.024,
+          "saturated_controller_updates": 24,
+          "saturation_duration_s": 0.24,
+          "mean_observation_age_s": 0.03217000000000001,
+          "max_observation_age_s": 0.08999999999999986,
+          "delivery_audit": {
+            "generated": 1000,
+            "delivered": 995,
+            "accepted": 443,
+            "dropped_outdated": 552,
+            "pending_at_last_decision": 5,
+            "drop_fraction_of_delivered": 0.5547738693467337,
+            "delivery_interarrival": {
+              "count": 994,
+              "min_s": 0.0,
+              "mean_s": 0.010020120724346077,
+              "max_s": 0.05000000000000071,
+              "zero_count": 227
+            },
+            "accepted_measurement_timestamp_intervals": {
+              "count": 442,
+              "min_s": 0.009999999999999787,
+              "mean_s": 0.022511312217194573,
+              "max_s": 0.08000000000000007,
+              "zero_count": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}
